@@ -10,20 +10,20 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView{
-        VStack {
-            Image("littleLemonLogo")
-            Image(systemName: "touchid")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, Cochort #2!")
-                .padding()
-            NavigationLink(destination:AboutView()){
-             Text("Go to About")
-                    .tracking(2)
-                .foregroundColor(.blue)
+            VStack {
+                Image("littleLemonLogo")
+                Image(systemName: "touchid")
+                    .imageScale(.large)
+                    .foregroundStyle(.tint)
+                Text("Hello, Cochort #2!")
+                    .padding()
+                NavigationLink(destination:AboutView()){
+                    Text("Go to About")
+                        .tracking(2)
+                        .foregroundColor(.blue)
+                }
             }
-        }
-        .navigationTitle(Text("Home"))
+            .navigationTitle(Text("Home"))
         }
     }
 
