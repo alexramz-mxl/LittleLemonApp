@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		403870D72E5420EB001C25F8 /* DessertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403870D62E5420EB001C25F8 /* DessertView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4024C3312E42EB2000DF3895 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		4024C3232E42EB1F00DF3895 /* LemonRestaurantC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LemonRestaurantC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4024C3302E42EB2000DF3895 /* LemonRestaurantC2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemonRestaurantC2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4024C33A2E42EB2000DF3895 /* LemonRestaurantC2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemonRestaurantC2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		403870D62E5420EB001C25F8 /* DessertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,6 +85,7 @@
 		4024C31A2E42EB1F00DF3895 = {
 			isa = PBXGroup;
 			children = (
+				403870D62E5420EB001C25F8 /* DessertView.swift */,
 				40C580C42E458214004EA671 /* Practice */,
 				4024C3252E42EB1F00DF3895 /* LemonRestaurantC2 */,
 				4024C3332E42EB2000DF3895 /* LemonRestaurantC2Tests */,
@@ -243,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				403870D72E5420EB001C25F8 /* DessertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
