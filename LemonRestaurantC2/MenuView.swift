@@ -19,9 +19,19 @@ struct MenuView: View {
      ]
      */
     
-    @State private var showMessage:Bool = false
-    @State private var showThankYou:Bool = false
-    @State private var showDesserts: Bool = false
+    /*
+     Computed Properties
+     
+     Computed property is a property that doesn't store a vakue directly,
+     instead, it calculates it's value every time it's accessed, using custom
+     logic you define.
+     
+     Syntax
+     
+     var propertyName: Type {
+     return a calculated value
+     }
+     */
     
     let menuItems = [
         MenuItem(
@@ -64,6 +74,81 @@ struct MenuView: View {
         ),
     ]
     
+    // Computed property
+    var sortedMenuItems: [MenuItem] {
+        menuItems.sorted {$0.price < $1.price}
+    }
+    
+    var premiumCount: Int {
+        let premiumFilter = menuItems.filter { item in
+            item.price >= 10
+    }
+    
+        return premiumFilter.count
+    }
+    
+    var premiumCount2: Int {
+        menuItems.filter {$0.price >= 10 }.count
+    }
+    
+    var regularCount: Int {
+        
+    let regularItems = menuItems.filter { item in
+        item.price < 10
+    }
+        
+        return regularItems.count
+            
+        }
+    
+    var regularCount2: Int {
+        menuItems.filter { $0.price < 10}.count
+    }
+    
+    var totalPrice: Double {
+        let total = menuItems.reduce(0.0) { accumulator, item in accumulator  + item.price
+            
+        }
+        return total
+    }
+    
+    // Average price
+    var averagePrice: Double {
+        let prices = menuItems.map { item in
+            item.price
+    }
+    
+    let total = prices.reduce(0.0) { accumulator, price in
+            accumulator + price
+    }
+            
+    let average = total / Double(prices.count)
+            
+
+    return average
+            
+    }
+    
+    var averagePrice2: String {
+        let prices = menuItems.map { item in
+                item.price
+        }
+            
+        let total = prices.reduce(0.0) { accumulator, price in
+                accumulator + price
+        }
+        
+        let average = total / Double(prices.count)
+            
+        return String(format: "%.2f", average)
+        
+    }
+        
+    @State private var showMessage:Bool = false
+    @State private var showThankYou:Bool = false
+    @State private var showDesserts: Bool = false
+    
+    
     var body: some View {
         VStack{
             HStack{
@@ -77,28 +162,24 @@ struct MenuView: View {
             }
             .padding()
             
+            //Assignment #3
+            Text("(Average price: $\(averagePrice, specifier: "%.2f)")")
+                .tracking(2)
+                .foregroundColor(.gray)
+                .font(.title3)
+            
+
+
+            /*
             Text("Total items: \(menuItems.count)")
                 .font(.headline)
                 .padding(.horizontal)
-            
-            Button("View Desserts"){
-                showDesserts.toggle()
-            }
-            .tracking(1)
-            .foregroundColor(.white)
-            .padding()
-            .background(Color(red: 0.6, green: 0.9, blue: 0.6))
-            .cornerRadius(10)
-            .font(.headline)
-            .sheet(isPresented: $showDesserts){
-                DessertView()
-            }
-            
+            */
             VStack(spacing: 20) {
-                Toggle("Show an special text", isOn: $showMessage)
+                Toggle("Show Premium Items", isOn: $showMessage)
                     .padding()
-                Toggle("Show Thank You Message", isOn: $showThankYou)
-                    .padding(.horizontal)
+//                Toggle("Show Thank You Message", isOn: $showThankYou)
+  //                  .padding(.horizontal)
                 
                 
                 if  showMessage {
@@ -113,10 +194,28 @@ struct MenuView: View {
                         .italic()
                         .padding(.horizontal)
                 }
+                Button("View Desserts"){
+                    showDesserts.toggle()
+                }
+                .tracking(1)
+                .foregroundColor(.white)
+                .padding()
+                .background(Color(red: 0.6, green: 0.9, blue: 0.6))
+                .cornerRadius(10)
+                .font(.headline)
+                .sheet(isPresented: $showDesserts){
+                    DessertView()
+                }
             }
-            List (menuItems){ item in
+//            List (menuItems){ item in
+                List(sortedMenuItems){ item in
                 MenuItemView(item: item)
             }
+            
+            Text("Premium: \(premiumCount) | Regular: \(regularCount) | total: $\(totalPrice, specifier: "%.2f")")
+                .padding()
+                .background(.yellow.opacity(0.2))
+                .cornerRadius(8)
             
         }
     }

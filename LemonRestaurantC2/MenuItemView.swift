@@ -27,8 +27,13 @@ struct MenuItemView: View {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                     Text(" Premium")
-                        .tracking(1)
+                        .tracking(2)
                 }
+                .font(.caption)
+                .foregroundColor(.orange)
+                .padding(6)
+                .background(.yellow.opacity(0.4))
+                .cornerRadius(6)
                 
             }
         }
